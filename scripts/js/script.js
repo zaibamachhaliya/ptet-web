@@ -153,13 +153,12 @@ document.addEventListener("click", function(e){
         return;
     }
 
-    // ✅ Only override normal click
-    e.preventDefault();
-
     const sectionId = link.getAttribute("data-section");
     const section = document.getElementById(sectionId);
 
     if(section){
+        // ✅ Only override normal click if section exists on current page
+        e.preventDefault();
         section.scrollIntoView({
             behavior: "smooth"
         });
