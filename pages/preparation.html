@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PTE Preparation | PTE HUB</title>
 
+    <!-- Global component styles (navbar, footer, auth-popup) -->
     <link rel="stylesheet" href="../styles/css/navbar.css">
     <link rel="stylesheet" href="../styles/css/footer.css">
+    <link rel="stylesheet" href="../styles/css/auth-popup.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
@@ -423,10 +425,12 @@
 
 <body>
 
-
+    <!-- ================= HEADER (NAVBAR) ================= -->
+    <header id="header">
+        <div id="navbar-placeholder"></div>
+    </header>
 
     <!-- HERO -->
-
     <section class="hero">
         <div>
             <h1>Prepare for PTE Success</h1>
@@ -438,7 +442,6 @@
     </section>
 
     <!-- PRACTICE TESTS -->
-
     <section id="practice-tests" class="features-section">
 
         <div class="features-heading">
@@ -489,7 +492,6 @@
     </section>
 
     <!-- STUDY MATERIAL -->
-
     <section id="study-materials" class="features-section">
 
         <div class="features-heading">
@@ -536,7 +538,6 @@
     </section>
 
     <!-- TIPS -->
-
     <section id="tips-strategies" class="features-section">
 
         <div class="features-heading">
@@ -582,7 +583,6 @@
     </section>
 
     <!-- MOCK TESTS -->
-
     <section id="mock-tests" class="features-section">
 
         <div class="features-heading">
@@ -632,8 +632,8 @@
         </div>
 
     </section>
-    <!-- STATS -->
 
+    <!-- STATS -->
     <section class="section">
         <div class="section-title">
             <h2>Preparation Statistics</h2>
@@ -665,7 +665,6 @@
     </section>
 
     <!-- FAQ -->
-
     <section class="section gray">
         <div class="section-title">
             <h2>Preparation FAQs</h2>
@@ -686,6 +685,8 @@
         </div>
 
     </section>
+
+    <!-- SAMPLE QUESTION -->
     <section class="features-section">
 
         <div class="features-heading">
@@ -715,6 +716,8 @@
         </div>
 
     </section>
+
+    <!-- CTA -->
     <section class="about-cta">
         <div class="container">
             <h2>Ready to Achieve Your Target PTE Score?</h2>
@@ -729,16 +732,22 @@
         </div>
     </section>
 
+    <!-- ================= FOOTER & POPUP PLACEHOLDERS ================= -->
+    <div id="footer-placeholder"></div>
+    <div id="auth-popup-placeholder"></div>
 
+    <!-- ================= SCRIPTS ================= -->
+    <script src="../scripts/js/navbar.js"></script>
+    <script src="../scripts/js/footer.js"></script>
+    <script src="../scripts/js/script.js"></script>
+    <script src="../scripts/js/auth-popup.js"></script>
+
+    <!-- Existing FAQ toggle script -->
     <script>
         document.querySelectorAll(".faq-question").forEach(btn => {
             btn.addEventListener("click", () => {
                 const answer = btn.nextElementSibling;
-
-                answer.style.display =
-                    answer.style.display === "block"
-                        ? "none"
-                        : "block";
+                answer.style.display = answer.style.display === "block" ? "none" : "block";
             });
         });
     </script>
