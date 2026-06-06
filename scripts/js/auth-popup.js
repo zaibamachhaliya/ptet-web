@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    fetch("components/auth-popup.html")
+    fetch("/components/auth-popup.html")
         .then(res => res.text())
         .then(data => {
             const container = document.getElementById("auth-popup-placeholder");
