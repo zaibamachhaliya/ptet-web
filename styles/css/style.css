@@ -76,7 +76,7 @@ button {
     display: none;
 }
 
-#address, #address1{
+#address, #book-now-btn{
     display: block;
     margin: 20px auto 0 auto; /* Centers the button horizontally */
     background: #8d2123;
@@ -87,7 +87,7 @@ button {
     cursor: pointer;
 }
 
-#address:hover, #address1:hover{
+#address:hover, #book-now-btn:hover{
     background:#6a181b;
     transform:translateY(-2px);
     box-shadow:0 8px 20px rgba(0,0,0,0.3);
@@ -108,30 +108,29 @@ button {
 }
 
 /* Hero Section */
-#point{
+.hero-image{
     background-image:url('../../assets/images/hero.jpg');
     background-size:cover;
     background-position:center;
-
+    width: 100%;
+    position: relative;
+    overflow: hidden;
     min-height:calc(100vh - 80px); /* adjust based on navbar height */
 
     display:flex;
-    align-items:center;
-    justify-content:center;
-
+    flex: 1;
     padding:80px 40px 40px 40px;
 }
 
 .hero-wrapper{
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:flex-start;
     max-width:1200px;
     width:100%;
-}
+        padding:80px 40px 40px 40px;
 
-.hero-image{
-    flex:1;
+    padding:80px 40px 40px 40px;
 }
 
 .hero-text{

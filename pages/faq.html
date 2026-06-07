@@ -27,7 +27,7 @@
 <section class="faq-hero">
     <div class="container">
         <h1>Frequently Asked Questions</h1>
-        <p>Find answers to the most common questions about PTE Academic.</p>
+        <p>Find answers to the most common questions regarding PTE Academic!</p>
     </div>
 </section>
 
@@ -47,6 +47,11 @@
             <div class="faq-item">
                 <button class="faq-question">How long is the PTE test?<span class="faq-icon"></span></button>
                 <div class="faq-answer"><p>The test duration is approximately 2 hours.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">How can I prepare for PTE?<span class="faq-icon"></span></button>
+                <div class="faq-answer"><p>You can prepare using mock tests and structured materials on PTE HUB.</p></div>
             </div>
 
             <div class="faq-item">
@@ -71,17 +76,12 @@
 
             <div class="faq-item">
                 <button class="faq-question">Can I retake the test?<span class="faq-icon"></span></button>
-                <div class="faq-answer"><p>Yes, you can retake after receiving your results.</p></div>
+                <div class="faq-answer"><p>Yes, you can retake the test after receiving your results.</p></div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">Is PTE valid for 2 years?<span class="faq-icon"></span></button>
-                <div class="faq-answer"><p>Yes, PTE scores are valid for two years.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">How can I prepare for PTE?<span class="faq-icon"></span></button>
-                <div class="faq-answer"><p>You can prepare using mock tests and structured materials on PTE HUB.</p></div>
+                <button class="faq-question">How many years is PTE valid for?<span class="faq-icon"></span></button>
+                <div class="faq-answer"><p>PTE scores are valid for 2 years.</p></div>
             </div>
 
         </div>
@@ -91,7 +91,7 @@
 
             <div class="faq-ask-card">
                 <h3>Still have a question?</h3>
-                <p>Drop your question and we’ll get back to you.</p>
+                <p>Drop your question here and we’ll get back to you.</p>
 
                 <textarea id="faqInput" placeholder="Type your question..."></textarea>
 
@@ -118,7 +118,7 @@ document.getElementById("faqSubmit").addEventListener("click", () => {
     const user = localStorage.getItem("pte_user_logged_in");
 
     if(!user){
-        showAuthPopup(); // ✅ global popup
+        showAuthPopup(); // global popup
         return;
     }
 
