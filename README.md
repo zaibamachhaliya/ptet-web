@@ -1,13 +1,16 @@
-## 📚 PTET Static Website
-
-Welcome to the PTE Static Website. This platform is designed to provide aspirants with accurate, up-to-date, and easy-to-navigate information about the PTE Academic examination, including eligibility criteria, exam patterns, important dates, scoring system, and preparation tips. 
-
 <div align="center">
-    <img width="500" height=auto alt="image" src="assets/images/Australia_university.jpg" />
-     <img width="500" height=auto alt="image" src="assets/images/canada.jpg" alt="Canada" />
+
+# 📚 PTET Static Website
+
+**Welcome to the PTE Static Website**. This platform is designed to provide aspirants with **accurate, up-to-date, and easy-to-navigate information about the PTE Academic examination**, including **eligibility criteria, exam patterns, important dates, scoring system, and preparation tips.**
+
+<img width="500" height=auto alt="image" src="assets/images/Australia_university.jpg" />
+<img width="500" height=auto alt="image" src="assets/images/canada.jpg" alt="Canada" />
      
 </div>
+
 <br>
+
 All source code, stylesheets, and visual assets required to run this project are completely self-contained within this repository.
 
 ---
@@ -26,20 +29,29 @@ The project is built using core web technologies to ensure blazing-fast load tim
 
 ## 📁 Project Structure
 
-Here is a quick overview of how the project files are organized:
+A quick overview of how the project files are organized:
 
 ```text
 ptet-static-website/
-├── 📂 images/          # Directory containing all visual assets and graphics
-│   └── ... 
+├── 📂 assets/images   # Directory containing all visual assets and graphics
+│   └── ...
+├── 📂 scripts/js      # Directory containing all JS files for pop-up windows, firebase auth, etc.
+│   └── ...
+├── 📂 components      # Directory containing all reusable components (pop-up window, footer, navbar)
+│   └── ...
+├── 📂 styles          # Directory containing all website pages (other than index.html)
+│   └── 🎨 style.css   # Custom CSS styles for UI layout and responsiveness
+│   └── ...
+├── 📂 pages           # Directory containing all website pages (other than index.html)
+│   └── ...
 ├── 📄 index.html      # Main landing page and structural backbone
-├── 🎨 style.css       # Custom CSS styles for UI layout and responsiveness
 └── 📝 README.md       # Project documentation (this file)
+
 ```
 
 ---
 
-## 📌 How to Use
+## 🚀 How to Run
 <b>1.</b> Clone the repository:
    ```bash
    git clone https://github.com/mohityadav8/ptet-static-website.git
@@ -48,11 +60,11 @@ ptet-static-website/
 
 ---
 
-## 🤝 Contribution
+## 🤝 Contributing
 Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-- Found a bug or want a feature? Feel free to open an Issue.
-- Want to fix it yourself? Fork the repo, create a new branch, make your improvements, and submit a Pull Request.
+- Issues: Found a bug or want a feature? Feel free to open an Issue.
+- Pull Requests (PRs): Want to fix it yourself? Fork the repo, create a new branch, make your improvements, and submit a Pull Request.
 
 ---
 
