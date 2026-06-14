@@ -1,278 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accepting Universities | PTE HUB</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universities Accepting PTE | PTE HUB</title>
 
-    <link rel="stylesheet" href="../styles/css/style.css">
-    <link rel="stylesheet" href="../styles/css/navbar.css">
-    <link rel="stylesheet" href="../styles/css/footer.css">
-    <link rel="stylesheet" href="../styles/css/universities.css">
-    <link rel="stylesheet" href="../styles/css/auth-popup.css">
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../styles/css/style.css" />
+    <link rel="stylesheet" href="../styles/css/navbar.css" />
+    <link rel="stylesheet" href="../styles/css/footer.css" />
+    <link rel="stylesheet" href="../styles/css/auth-popup.css" />
+    <link rel="stylesheet" href="../styles/css/theme.css" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
+    <!-- Font Awesome & Google Fonts -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <script src="../scripts/js/theme.js"></script>
 
+    <style>
+      /* ===== HERO SECTION ===== */
+      .universities-hero {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        position: relative;
+        padding: 100px 20px 80px;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+      }
+      .universities-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://img.magnific.com/free-photo/focused-students-using-tablet-discussing-information_1262-14929.jpg");
+        background-size: cover;
+        background-position: center 30%;
+        opacity: 0.5;
+        z-index: 0;
+      }
+      .universities-hero .hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .universities-hero h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+      }
+      .universities-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 30px;
+      }
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        padding: 6px 18px;
+        border-radius: 40px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* ===== FILTER & SEARCH SECTION ===== */
+      .filter-section {
+        padding: 40px 20px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .search-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 35px;
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: var(--bg-card);
+        border-radius: 60px;
+        padding: 5px 20px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 8px 20px var(--shadow-card);
+        border: 1px solid var(--border-card);
+        transition: 0.3s;
+      }
+      .search-box i {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+      .search-box input {
+        flex: 1;
+        padding: 14px 12px;
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        outline: none;
+        color: var(--text-primary);
+      }
+      .search-box input::placeholder {
+        color: var(--text-light);
+      }
+      .search-box:focus-within {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px var(--shadow-card-hover);
+      }
+
+      /* TABS */
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 45px;
+      }
+      .tab-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        padding: 10px 24px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.25s;
+        color: var(--text-secondary);
+        box-shadow: 0 2px 6px var(--shadow-card);
+      }
+      .tab-btn i {
+        margin-right: 6px;
+      }
+      .tab-btn.active {
+        background: #8d2123;
+        border-color: #8d2123;
+        color: white;
+        box-shadow: 0 6px 14px rgba(141, 33, 35, 0.35);
+      }
+      .tab-btn:hover:not(.active) {
+        background: var(--bg-secondary);
+        transform: translateY(-2px);
+      }
+
+      /* UNIVERSITIES GRID */
+      .universities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 28px;
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 20px 20px 60px;
+      }
+      .uni-card {
+        background: var(--bg-card);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px var(--shadow-card);
+        border: 1px solid var(--border-card);
+        display: flex;
+        flex-direction: column;
+      }
+      .uni-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px var(--shadow-card-hover);
+      }
+      .card-header {
+        padding: 24px 24px 12px;
+        border-bottom: 1px solid var(--border-card);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .uni-icon {
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, #8d2123, #b13a3c);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
+      .uni-title h3 {
+        font-size: 1.3rem;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+      }
+      .uni-location {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .uni-location i {
+        font-size: 0.7rem;
+        color: #8d2123;
+      }
+      .card-body {
+        padding: 18px 24px 24px;
+        flex: 1;
+      }
+      .card-body p {
+        color: var(--text-secondary);
+        line-height: 1.5;
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+      }
+      .uni-badge {
+        display: inline-block;
+        background: rgba(141, 33, 35, 0.12);
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #8d2123;
+      }
+      .card-footer {
+        padding: 12px 24px 24px;
+        border-top: 1px solid var(--border-card);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .score-hint {
+        font-size: 0.75rem;
+        color: var(--text-light);
+      }
+      .uni-link {
+        background: transparent;
+        border: 1.5px solid #8d2123;
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #8d2123;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+      .uni-link:hover {
+        background: #8d2123;
+        color: white;
+      }
+
+      /* NO RESULTS */
+      .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        grid-column: 1 / -1;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .universities-hero h1 {
+          font-size: 2.2rem;
+        }
+        .tab-btn {
+          padding: 6px 18px;
+          font-size: 0.8rem;
+        }
+        .universities-grid {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <header id="header">
-        <div id="navbar-placeholder"></div>
+      <div id="navbar-placeholder"></div>
     </header>
 
     <main>
+      <!-- Hero -->
+      <section class="universities-hero">
+        <div class="hero-inner">
+          <div class="hero-badge">
+            <i class="fas fa-graduation-cap"></i> 3500+ institutions worldwide
+          </div>
+          <h1>Top Universities Accepting PTE</h1>
+          <p>
+            Find your dream university - PTE Academic is accepted by thousands
+            of leading institutions across the globe.
+          </p>
+        </div>
+      </section>
 
-        <!-- HERO -->
-        <section class="uni-hero">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <span class="hero-badge">
-                        <i class="fas fa-university"></i> Global Recognition
-                    </span>
-                    <h1>Universities Accepting PTE</h1>
-                    <p>
-                        PTE Academic is recognized by thousands of institutions globally. Find your dream university and check their PTE requirements.
-                    </p>
-                    <div class="hero-search-bar">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="uniSearch" placeholder="Search for universities, locations, or requirements...">
-                    </div>
-                </div>
-                <div class="hero-mascot-container">
-                    <img src="../assets/images/mascot.png" alt="PTE Hub Mascot" class="hero-mascot">
-                    <div class="mascot-speech">
-                        <p>Hi there! Over <strong>3,500+ universities</strong> accept PTE scores. Search below to find yours!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Filter & Search -->
+      <div class="filter-section">
+        <div class="search-wrapper">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by university name..."
+            />
+          </div>
+        </div>
+        <div class="tabs" id="filterTabs">
+          <button class="tab-btn active" data-country="all">
+            <i class="fas fa-globe"></i> All
+          </button>
+          <button class="tab-btn" data-country="australia">
+            <i class="fas fa-map-pin"></i> Australia
+          </button>
+          <button class="tab-btn" data-country="canada">
+            <i class="fas fa-map-pin"></i> Canada
+          </button>
+          <button class="tab-btn" data-country="uk">
+            <i class="fas fa-map-pin"></i> United Kingdom
+          </button>
+          <button class="tab-btn" data-country="newzealand">
+            <i class="fas fa-map-pin"></i> New Zealand
+          </button>
+        </div>
+      </div>
 
-        <!-- COUNTRY CATEGORIES / TABS -->
-        <section class="uni-filters-section">
-            <div class="container">
-                <div class="filter-tabs" role="tablist">
-                    <button class="filter-tab active" data-country="all" role="tab" aria-selected="true">All Countries</button>
-                    <button class="filter-tab" data-country="australia" role="tab" aria-selected="false"><i class="fas fa-map-marker-alt"></i> Australia</button>
-                    <button class="filter-tab" data-country="canada" role="tab" aria-selected="false"><i class="fas fa-map-marker-alt"></i> Canada</button>
-                    <button class="filter-tab" data-country="united-kingdom" role="tab" aria-selected="false"><i class="fas fa-map-marker-alt"></i> United Kingdom</button>
-                    <button class="filter-tab" data-country="new-zealand" role="tab" aria-selected="false"><i class="fas fa-map-marker-alt"></i> New Zealand</button>
-                    <button class="filter-tab" data-country="united-states" role="tab" aria-selected="false"><i class="fas fa-map-marker-alt"></i> United States</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- UNIVERSITY CARDS GRID -->
-        <section class="uni-grid-section">
-            <div class="container">
-                <div id="uniGrid" class="uni-grid">
-                    
-                    <!-- AUSTRALIA -->
-                    <div class="uni-card" data-country="australia">
-                        <div class="uni-card-header">
-                            <span class="country-badge au"><i class="fas fa-globe-asia"></i> Australia</span>
-                            <h3>University of Melbourne</h3>
-                        </div>
-                        <p class="uni-desc">A public research university in Melbourne, consistently ranked as one of the top academic institutions in the Southern Hemisphere.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">65+ (No band less than 58)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Feb, July</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="australia">
-                        <div class="uni-card-header">
-                            <span class="country-badge au"><i class="fas fa-globe-asia"></i> Australia</span>
-                            <h3>University of Sydney</h3>
-                        </div>
-                        <p class="uni-desc">Australia's first university, offering a broad range of programs and a vibrant campus life in the heart of Sydney.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">68+ (No band less than 61)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Feb, Aug</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="australia">
-                        <div class="uni-card-header">
-                            <span class="country-badge au"><i class="fas fa-globe-asia"></i> Australia</span>
-                            <h3>Australian National University</h3>
-                        </div>
-                        <p class="uni-desc">Located in Canberra, ANU is celebrated for its research-intensive focus and excellent student-to-staff ratios.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">64+ (No band less than 55)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Feb, July</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <!-- CANADA -->
-                    <div class="uni-card" data-country="canada">
-                        <div class="uni-card-header">
-                            <span class="country-badge ca"><i class="fas fa-leaf"></i> Canada</span>
-                            <h3>University of Toronto</h3>
-                        </div>
-                        <p class="uni-desc">A leading global research institution in Canada's largest city, known for historic architecture and groundbreaking innovation.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">65+ (Minimum 60 in communicative skills)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Sept, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="canada">
-                        <div class="uni-card-header">
-                            <span class="country-badge ca"><i class="fas fa-leaf"></i> Canada</span>
-                            <h3>University of British Columbia</h3>
-                        </div>
-                        <p class="uni-desc">A global center for research and teaching, consistent ranked among the top 20 public universities in the world.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">65+ (Minimum 60 in all components)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Sept, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="canada">
-                        <div class="uni-card-header">
-                            <span class="country-badge ca"><i class="fas fa-leaf"></i> Canada</span>
-                            <h3>McGill University</h3>
-                        </div>
-                        <p class="uni-desc">Located in Montreal, McGill is one of Canada's most prestigious institutions, drawing students from over 150 countries.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">65+ (No band less than 60)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Sept, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <!-- UNITED KINGDOM -->
-                    <div class="uni-card" data-country="united-kingdom">
-                        <div class="uni-card-header">
-                            <span class="country-badge uk"><i class="fas fa-crown"></i> United Kingdom</span>
-                            <h3>University of Oxford</h3>
-                        </div>
-                        <p class="uni-desc">The oldest university in the English-speaking world, offering premier undergraduate and postgraduate research programs.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">76+ (No band less than 66)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">October</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="united-kingdom">
-                        <div class="uni-card-header">
-                            <span class="country-badge uk"><i class="fas fa-crown"></i> United Kingdom</span>
-                            <h3>University of Cambridge</h3>
-                        </div>
-                        <p class="uni-desc">A collegiate research institution known for historic rigor, scientific discoveries, and high-impact international alumni.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">75+ (No band less than 70)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">October</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="united-kingdom">
-                        <div class="uni-card-header">
-                            <span class="country-badge uk"><i class="fas fa-crown"></i> United Kingdom</span>
-                            <h3>Imperial College London</h3>
-                        </div>
-                        <p class="uni-desc">A world-class science, engineering, and medical institution situated in South Kensington, central London.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">69+ (No band less than 62)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Oct, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <!-- NEW ZEALAND -->
-                    <div class="uni-card" data-country="new-zealand">
-                        <div class="uni-card-header">
-                            <span class="country-badge nz"><i class="fas fa-mountain"></i> New Zealand</span>
-                            <h3>University of Auckland</h3>
-                        </div>
-                        <p class="uni-desc">New Zealand's largest and top-ranked university, offering comprehensive coursework across diverse faculties.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">58+ (No band less than 50)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Feb, July</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="new-zealand">
-                        <div class="uni-card-header">
-                            <span class="country-badge nz"><i class="fas fa-mountain"></i> New Zealand</span>
-                            <h3>University of Otago</h3>
-                        </div>
-                        <p class="uni-desc">Located in Dunedin, Otago is renowned for its medical sciences, active residential culture, and pristine campus environment.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">58+ (No band less than 50)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Feb, July</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <!-- UNITED STATES -->
-                    <div class="uni-card" data-country="united-states">
-                        <div class="uni-card-header">
-                            <span class="country-badge us"><i class="fas fa-flag-usa"></i> United States</span>
-                            <h3>Harvard University</h3>
-                        </div>
-                        <p class="uni-desc">A historic Ivy League research university in Cambridge, Massachusetts, known globally for its competitive admissions.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">70+ (Recommended 75+)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Aug, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="united-states">
-                        <div class="uni-card-header">
-                            <span class="country-badge us"><i class="fas fa-flag-usa"></i> United States</span>
-                            <h3>Stanford University</h3>
-                        </div>
-                        <p class="uni-desc">Located in the heart of Silicon Valley, Stanford is famous for entrepreneurship, academic rigor, and athletic success.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">68+ (Recommended 73+)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Sept, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <div class="uni-card" data-country="united-states">
-                        <div class="uni-card-header">
-                            <span class="country-badge us"><i class="fas fa-flag-usa"></i> United States</span>
-                            <h3>New York University</h3>
-                        </div>
-                        <p class="uni-desc">Located in Manhattan, NYU provides an urban academic experience with major global sites and deep industrial connections.</p>
-                        <div class="uni-details">
-                            <div class="detail-item"><span class="label">PTE Requirement:</span><strong class="value score">65+ (Minimum 70 for business)</strong></div>
-                            <div class="detail-item"><span class="label">Intakes:</span><span class="value">Sept, Jan</span></div>
-                        </div>
-                        <a href="#" class="uni-link">View Course Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                </div>
-
-                <!-- NO RESULTS STATE -->
-                <div id="noResults" class="no-results" style="display:none;">
-                    <i class="fas fa-search-minus"></i>
-                    <h3>No Universities Found</h3>
-                    <p>Try adjusting your search query or choosing another country.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="uni-cta">
-            <div class="container">
-                <h2>Ready to Start Your Journey?</h2>
-                <p>Prepare for your PTE Academic exam with our customized preparation mock tests and study material.</p>
-                <a href="/pages/preparation.html"><button class="primary-btn-cta">Start Free Practice</button></a>
-            </div>
-        </section>
-
+      <!-- Universities Grid -->
+      <div id="universitiesGrid" class="universities-grid"></div>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -283,446 +346,231 @@
     <script src="../scripts/js/script.js"></script>
     <script src="../scripts/js/auth-popup.js"></script>
 
-    <!-- Page Specific Script -->
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const searchInput = document.getElementById("uniSearch");
-        const filterTabs = document.querySelectorAll(".filter-tab");
-        const uniCards = document.querySelectorAll(".uni-card");
-        const noResults = document.getElementById("noResults");
-
-        let activeCountry = "all";
-        let searchQuery = "";
-
-        function filterUniversities() {
-            let visibleCount = 0;
-
-            uniCards.forEach(card => {
-                const title = card.querySelector("h3").textContent.toLowerCase();
-                const desc = card.querySelector(".uni-desc").textContent.toLowerCase();
-                const cardCountry = card.getAttribute("data-country");
-
-                const matchesCountry = (activeCountry === "all" || cardCountry === activeCountry);
-                const matchesSearch = title.includes(searchQuery) || desc.includes(searchQuery) || cardCountry.includes(searchQuery);
-
-                if (matchesCountry && matchesSearch) {
-                    card.style.display = "flex";
-                    visibleCount++;
-                } else {
-                    card.style.display = "none";
-                }
-            });
-
-            if (visibleCount === 0) {
-                noResults.style.display = "block";
-            } else {
-                noResults.style.display = "none";
-            }
-        }
-
-        // Search Input Event
-        searchInput.addEventListener("input", (e) => {
-            searchQuery = e.target.value.toLowerCase().trim();
-            filterUniversities();
-        });
-
-        // Tabs Click Event
-        filterTabs.forEach(tab => {
-            tab.addEventListener("click", () => {
-                filterTabs.forEach(t => {
-                    t.classList.remove("active");
-                    t.setAttribute("aria-selected", "false");
-                });
-                tab.classList.add("active");
-                tab.setAttribute("aria-selected", "true");
-                activeCountry = tab.getAttribute("data-country");
-                filterUniversities();
-            });
-        });
-    });
-    </script>
-</body>
-</html>
-    <title>Universities Accepting PTE | PTE HUB</title>
-
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="../styles/css/style.css">
-    <link rel="stylesheet" href="../styles/css/navbar.css">
-    <link rel="stylesheet" href="../styles/css/footer.css">
-    <link rel="stylesheet" href="../styles/css/auth-popup.css">
-    <link rel="stylesheet" href="../styles/css/theme.css">
-
-    <!-- Font Awesome & Google Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <script src="../scripts/js/theme.js"></script>
-
-    <style>
-        /* ===== HERO SECTION ===== */
-        .universities-hero {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            position: relative;
-            padding: 100px 20px 80px;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-        .universities-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://img.magnific.com/free-photo/focused-students-using-tablet-discussing-information_1262-14929.jpg');
-            background-size: cover;
-            background-position: center 30%;
-            opacity: 0.5;
-            z-index: 0;
-        }
-        .universities-hero .hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .universities-hero h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-        .universities-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(8px);
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* ===== FILTER & SEARCH SECTION ===== */
-        .filter-section {
-            padding: 40px 20px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .search-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 35px;
-        }
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: var(--bg-card);
-            border-radius: 60px;
-            padding: 5px 20px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 8px 20px var(--shadow-card);
-            border: 1px solid var(--border-card);
-            transition: 0.3s;
-        }
-        .search-box i {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        .search-box input {
-            flex: 1;
-            padding: 14px 12px;
-            border: none;
-            background: transparent;
-            font-size: 1rem;
-            outline: none;
-            color: var(--text-primary);
-        }
-        .search-box input::placeholder {
-            color: var(--text-light);
-        }
-        .search-box:focus-within {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px var(--shadow-card-hover);
-        }
-
-        /* TABS */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 45px;
-        }
-        .tab-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.25s;
-            color: var(--text-secondary);
-            box-shadow: 0 2px 6px var(--shadow-card);
-        }
-        .tab-btn i {
-            margin-right: 6px;
-        }
-        .tab-btn.active {
-            background: #8d2123;
-            border-color: #8d2123;
-            color: white;
-            box-shadow: 0 6px 14px rgba(141,33,35,0.35);
-        }
-        .tab-btn:hover:not(.active) {
-            background: var(--bg-secondary);
-            transform: translateY(-2px);
-        }
-
-        /* UNIVERSITIES GRID */
-        .universities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 28px;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 20px 60px;
-        }
-        .uni-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px var(--shadow-card);
-            border: 1px solid var(--border-card);
-            display: flex;
-            flex-direction: column;
-        }
-        .uni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px var(--shadow-card-hover);
-        }
-        .card-header {
-            padding: 24px 24px 12px;
-            border-bottom: 1px solid var(--border-card);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .uni-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #8d2123, #b13a3c);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-        .uni-title h3 {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-        .uni-location {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .uni-location i {
-            font-size: 0.7rem;
-            color: #8d2123;
-        }
-        .card-body {
-            padding: 18px 24px 24px;
-            flex: 1;
-        }
-        .card-body p {
-            color: var(--text-secondary);
-            line-height: 1.5;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-        }
-        .uni-badge {
-            display: inline-block;
-            background: rgba(141,33,35,0.12);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #8d2123;
-        }
-        .card-footer {
-            padding: 12px 24px 24px;
-            border-top: 1px solid var(--border-card);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .score-hint {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-        .uni-link {
-            background: transparent;
-            border: 1.5px solid #8d2123;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #8d2123;
-            text-decoration: none;
-            transition: 0.25s;
-        }
-        .uni-link:hover {
-            background: #8d2123;
-            color: white;
-        }
-
-        /* NO RESULTS */
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            grid-column: 1 / -1;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .universities-hero h1 { font-size: 2.2rem; }
-            .tab-btn { padding: 6px 18px; font-size: 0.8rem; }
-            .universities-grid { grid-template-columns: 1fr; padding: 20px; }
-        }
-    </style>
-</head>
-<body>
-
-<header id="header">
-    <div id="navbar-placeholder"></div>
-</header>
-
-<main>
-    <!-- Hero -->
-    <section class="universities-hero">
-        <div class="hero-inner">
-            <div class="hero-badge">
-                <i class="fas fa-graduation-cap"></i> 3500+ institutions worldwide
-            </div>
-            <h1>Top Universities Accepting PTE</h1>
-            <p>Find your dream university - PTE Academic is accepted by thousands of leading institutions across the globe.</p>
-        </div>
-    </section>
-
-    <!-- Filter & Search -->
-    <div class="filter-section">
-        <div class="search-wrapper">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search by university name...">
-            </div>
-        </div>
-        <div class="tabs" id="filterTabs">
-            <button class="tab-btn active" data-country="all"><i class="fas fa-globe"></i> All</button>
-            <button class="tab-btn" data-country="australia"><i class="fas fa-map-pin"></i> Australia</button>
-            <button class="tab-btn" data-country="canada"><i class="fas fa-map-pin"></i> Canada</button>
-            <button class="tab-btn" data-country="uk"><i class="fas fa-map-pin"></i> United Kingdom</button>
-            <button class="tab-btn" data-country="newzealand"><i class="fas fa-map-pin"></i> New Zealand</button>
-        </div>
-    </div>
-
-    <!-- Universities Grid -->
-    <div id="universitiesGrid" class="universities-grid">
-    </div>
-</main>
-
-<div id="footer-placeholder"></div>
-<div id="auth-popup-placeholder"></div>
-
-<script src="../scripts/js/navbar.js"></script>
-<script src="../scripts/js/footer.js"></script>
-<script src="../scripts/js/script.js"></script>
-<script src="../scripts/js/auth-popup.js"></script>
-
-<script>
-    // --------------------------------
-    // UNIVERSITY DATA
-    // --------------------------------
-    const universitiesData = [
+      // --------------------------------
+      // UNIVERSITY DATA
+      // --------------------------------
+      const universitiesData = [
         // AUSTRALIA
-        { name: "University of Melbourne", country: "australia", location: "Melbourne, Australia", description: "Top-ranked Australian university, widely accepts PTE Academic for undergraduate and postgraduate admissions.", score: "58-65+", link: "#" },
-        { name: "Australian National University", country: "australia", location: "Canberra, Australia", description: "Leading research university. PTE Academic accepted for all programs with competitive score requirements.", score: "64+", link: "#" },
-        { name: "University of Sydney", country: "australia", location: "Sydney, Australia", description: "Globally recognised, PTE scores accepted for direct entry and foundation programs.", score: "61-68", link: "#" },
-        { name: "University of Queensland", country: "australia", location: "Brisbane, Australia", description: "Member of Group of Eight. Accepts PTE Academic for all courses.", score: "64+", link: "#" },
-        { name: "Monash University", country: "australia", location: "Melbourne, Australia", description: "Innovative university with strong industry links. PTE Academic accepted.", score: "58-65", link: "#" },
+        {
+          name: "University of Melbourne",
+          country: "australia",
+          location: "Melbourne, Australia",
+          description:
+            "Top-ranked Australian university, widely accepts PTE Academic for undergraduate and postgraduate admissions.",
+          score: "58-65+",
+          link: "#",
+        },
+        {
+          name: "Australian National University",
+          country: "australia",
+          location: "Canberra, Australia",
+          description:
+            "Leading research university. PTE Academic accepted for all programs with competitive score requirements.",
+          score: "64+",
+          link: "#",
+        },
+        {
+          name: "University of Sydney",
+          country: "australia",
+          location: "Sydney, Australia",
+          description:
+            "Globally recognised, PTE scores accepted for direct entry and foundation programs.",
+          score: "61-68",
+          link: "#",
+        },
+        {
+          name: "University of Queensland",
+          country: "australia",
+          location: "Brisbane, Australia",
+          description:
+            "Member of Group of Eight. Accepts PTE Academic for all courses.",
+          score: "64+",
+          link: "#",
+        },
+        {
+          name: "Monash University",
+          country: "australia",
+          location: "Melbourne, Australia",
+          description:
+            "Innovative university with strong industry links. PTE Academic accepted.",
+          score: "58-65",
+          link: "#",
+        },
 
         // CANADA
-        { name: "University of Toronto", country: "canada", location: "Toronto, Canada", description: "Canada's top university. PTE Academic accepted for undergraduate and graduate admissions.", score: "60-76", link: "#" },
-        { name: "University of British Columbia", country: "canada", location: "Vancouver, Canada", description: "World-class research university. Accepts PTE scores for all programs.", score: "65+", link: "#" },
-        { name: "McGill University", country: "canada", location: "Montreal, Canada", description: "Highly selective, PTE Academic recognised for English proficiency.", score: "65+", link: "#" },
-        { name: "University of Alberta", country: "canada", location: "Edmonton, Canada", description: "Leading public university. PTE accepted across faculties.", score: "59-68", link: "#" },
-        { name: "University of Waterloo", country: "canada", location: "Waterloo, Canada", description: "Known for engineering & co-op. PTE Academic accepted.", score: "63+", link: "#" },
+        {
+          name: "University of Toronto",
+          country: "canada",
+          location: "Toronto, Canada",
+          description:
+            "Canada's top university. PTE Academic accepted for undergraduate and graduate admissions.",
+          score: "60-76",
+          link: "#",
+        },
+        {
+          name: "University of British Columbia",
+          country: "canada",
+          location: "Vancouver, Canada",
+          description:
+            "World-class research university. Accepts PTE scores for all programs.",
+          score: "65+",
+          link: "#",
+        },
+        {
+          name: "McGill University",
+          country: "canada",
+          location: "Montreal, Canada",
+          description:
+            "Highly selective, PTE Academic recognised for English proficiency.",
+          score: "65+",
+          link: "#",
+        },
+        {
+          name: "University of Alberta",
+          country: "canada",
+          location: "Edmonton, Canada",
+          description:
+            "Leading public university. PTE accepted across faculties.",
+          score: "59-68",
+          link: "#",
+        },
+        {
+          name: "University of Waterloo",
+          country: "canada",
+          location: "Waterloo, Canada",
+          description: "Known for engineering & co-op. PTE Academic accepted.",
+          score: "63+",
+          link: "#",
+        },
 
         // UNITED KINGDOM
-        { name: "University of Oxford", country: "uk", location: "Oxford, UK", description: "Global elite university. PTE Academic accepted for most postgraduate programs.", score: "66-76", link: "#" },
-        { name: "University of Cambridge", country: "uk", location: "Cambridge, UK", description: "Accepts PTE Academic for undergraduate and graduate admissions.", score: "76+", link: "#" },
-        { name: "Imperial College London", country: "uk", location: "London, UK", description: "STEM specialist. PTE scores widely accepted.", score: "62-69", link: "#" },
-        { name: "University College London", country: "uk", location: "London, UK", description: "Multidisciplinary university. PTE Academic accepted for all levels.", score: "62-75", link: "#" },
-        { name: "University of Edinburgh", country: "uk", location: "Edinburgh, UK", description: "Prestigious Scottish university. Recognises PTE Academic.", score: "65+", link: "#" },
+        {
+          name: "University of Oxford",
+          country: "uk",
+          location: "Oxford, UK",
+          description:
+            "Global elite university. PTE Academic accepted for most postgraduate programs.",
+          score: "66-76",
+          link: "#",
+        },
+        {
+          name: "University of Cambridge",
+          country: "uk",
+          location: "Cambridge, UK",
+          description:
+            "Accepts PTE Academic for undergraduate and graduate admissions.",
+          score: "76+",
+          link: "#",
+        },
+        {
+          name: "Imperial College London",
+          country: "uk",
+          location: "London, UK",
+          description: "STEM specialist. PTE scores widely accepted.",
+          score: "62-69",
+          link: "#",
+        },
+        {
+          name: "University College London",
+          country: "uk",
+          location: "London, UK",
+          description:
+            "Multidisciplinary university. PTE Academic accepted for all levels.",
+          score: "62-75",
+          link: "#",
+        },
+        {
+          name: "University of Edinburgh",
+          country: "uk",
+          location: "Edinburgh, UK",
+          description:
+            "Prestigious Scottish university. Recognises PTE Academic.",
+          score: "65+",
+          link: "#",
+        },
 
         // NEW ZEALAND
-        { name: "University of Auckland", country: "newzealand", location: "Auckland, New Zealand", description: "New Zealand's highest-ranked university. PTE Academic accepted.", score: "58-65", link: "#" },
-        { name: "University of Otago", country: "newzealand", location: "Dunedin, New Zealand", description: "Renowned for health sciences. Accepts PTE scores.", score: "58-64", link: "#" },
-        { name: "Victoria University of Wellington", country: "newzealand", location: "Wellington, New Zealand", description: "Accepts PTE Academic for admission and visa purposes.", score: "58+", link: "#" },
-        { name: "University of Canterbury", country: "newzealand", location: "Christchurch, New Zealand", description: "Leading research university. PTE accepted.", score: "50-64", link: "#" },
-        { name: "Massey University", country: "newzealand", location: "Palmerston North, New Zealand", description: "Accepts PTE Academic for all programs.", score: "50-65", link: "#" },
-    ];
+        {
+          name: "University of Auckland",
+          country: "newzealand",
+          location: "Auckland, New Zealand",
+          description:
+            "New Zealand's highest-ranked university. PTE Academic accepted.",
+          score: "58-65",
+          link: "#",
+        },
+        {
+          name: "University of Otago",
+          country: "newzealand",
+          location: "Dunedin, New Zealand",
+          description: "Renowned for health sciences. Accepts PTE scores.",
+          score: "58-64",
+          link: "#",
+        },
+        {
+          name: "Victoria University of Wellington",
+          country: "newzealand",
+          location: "Wellington, New Zealand",
+          description: "Accepts PTE Academic for admission and visa purposes.",
+          score: "58+",
+          link: "#",
+        },
+        {
+          name: "University of Canterbury",
+          country: "newzealand",
+          location: "Christchurch, New Zealand",
+          description: "Leading research university. PTE accepted.",
+          score: "50-64",
+          link: "#",
+        },
+        {
+          name: "Massey University",
+          country: "newzealand",
+          location: "Palmerston North, New Zealand",
+          description: "Accepts PTE Academic for all programs.",
+          score: "50-65",
+          link: "#",
+        },
+      ];
 
-    let currentCountry = "all";
-    let currentSearch = "";
+      let currentCountry = "all";
+      let currentSearch = "";
 
-    // DOM elements
-    const gridContainer = document.getElementById("universitiesGrid");
-    const searchInput = document.getElementById("searchInput");
-    const tabButtons = document.querySelectorAll(".tab-btn");
+      // DOM elements
+      const gridContainer = document.getElementById("universitiesGrid");
+      const searchInput = document.getElementById("searchInput");
+      const tabButtons = document.querySelectorAll(".tab-btn");
 
-    // Filter function
-    function filterUniversities() {
-        let filtered = universitiesData.filter(uni => {
-            // country filter
-            if (currentCountry !== "all" && uni.country !== currentCountry) return false;
-            // search filter (by name or location)
-            if (currentSearch.trim() !== "") {
-                const query = currentSearch.toLowerCase();
-                return uni.name.toLowerCase().includes(query) || uni.location.toLowerCase().includes(query);
-            }
-            return true;
+      // Filter function
+      function filterUniversities() {
+        let filtered = universitiesData.filter((uni) => {
+          // country filter
+          if (currentCountry !== "all" && uni.country !== currentCountry)
+            return false;
+          // search filter (by name or location)
+          if (currentSearch.trim() !== "") {
+            const query = currentSearch.toLowerCase();
+            return (
+              uni.name.toLowerCase().includes(query) ||
+              uni.location.toLowerCase().includes(query)
+            );
+          }
+          return true;
         });
         renderUniversities(filtered);
-    }
+      }
 
-    // Render cards
-    function renderUniversities(universities) {
+      // Render cards
+      function renderUniversities(universities) {
         if (!gridContainer) return;
         if (universities.length === 0) {
-            gridContainer.innerHTML = `<div class="no-results"><i class="fas fa-school-circle-exclamation"></i> <br>No universities match your criteria. Try another filter!</div>`;
-            return;
+          gridContainer.innerHTML = `<div class="no-results"><i class="fas fa-school-circle-exclamation"></i> <br>No universities match your criteria. Try another filter!</div>`;
+          return;
         }
 
-        const cardsHTML = universities.map(uni => {
+        const cardsHTML = universities
+          .map((uni) => {
             let countryFlag = "";
             if (uni.country === "australia") countryFlag = "🇦🇺";
             else if (uni.country === "canada") countryFlag = "🇨🇦";
@@ -731,8 +579,11 @@
             else countryFlag = "🌍";
 
             // Generate unique ID slug from university name
-            const uniSlug = uni.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
-            
+            const uniSlug = uni.name
+              .toLowerCase()
+              .replace(/ /g, "-")
+              .replace(/[^\w-]/g, "");
+
             return `
                 <div class="uni-card">
                     <div class="card-header">
@@ -756,29 +607,29 @@
                     </div>
                 </div>
             `;
-        }).join("");
+          })
+          .join("");
         gridContainer.innerHTML = cardsHTML;
-    }
+      }
 
-    // Event Listeners
-    tabButtons.forEach(btn => {
+      // Event Listeners
+      tabButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
-            // update active class
-            tabButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            currentCountry = btn.getAttribute("data-country");
-            filterUniversities();
+          // update active class
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentCountry = btn.getAttribute("data-country");
+          filterUniversities();
         });
-    });
+      });
 
-    searchInput.addEventListener("input", (e) => {
+      searchInput.addEventListener("input", (e) => {
         currentSearch = e.target.value;
         filterUniversities();
-    });
+      });
 
-    // initial render
-    filterUniversities();
-</script>
-
-</body>
+      // initial render
+      filterUniversities();
+    </script>
+  </body>
 </html>
