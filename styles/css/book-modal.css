@@ -1,0 +1,317 @@
+/* ===== PREMIUM BOOK NOW MODAL ===== */
+
+.book-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 5, 20, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+.book-modal-overlay.open {
+    display: flex;
+    animation: overlayFadeIn 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Modal Container */
+.book-modal {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 92%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.06);
+    animation: modalSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(40px) scale(0.96); opacity: 0; }
+    to   { transform: translateY(0)     scale(1);    opacity: 1; }
+}
+
+/* === GRADIENT HEADER BANNER === */
+.book-modal-header {
+    background: linear-gradient(135deg, #8d2123 0%, #c0392b 50%, #6a181b 100%);
+    padding: 32px 36px 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative circles in header */
+.book-modal-header::before,
+.book-modal-header::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+}
+.book-modal-header::before {
+    width: 160px; height: 160px;
+    top: -50px; right: -40px;
+}
+.book-modal-header::after {
+    width: 90px; height: 90px;
+    bottom: -30px; left: 20px;
+}
+
+.book-modal-header h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+}
+
+.book-modal-header p {
+    margin: 0;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.78);
+    font-weight: 400;
+}
+
+.book-modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+}
+
+.book-modal-badge i {
+    font-size: 10px;
+    color: #ffd700;
+}
+
+/* Close button */
+.book-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 2;
+}
+.book-modal-close:hover {
+    background: rgba(255,255,255,0.32);
+    transform: rotate(90deg);
+}
+
+/* === FORM BODY === */
+.book-modal-body {
+    padding: 28px 36px 32px;
+}
+
+.book-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Field group */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #444;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* Icon wrapper */
+.input-icon-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-wrap i {
+    position: absolute;
+    left: 14px;
+    color: #b0b0b0;
+    font-size: 14px;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.input-icon-wrap input,
+.input-icon-wrap select {
+    width: 100%;
+    padding: 12px 14px 12px 40px;
+    border: 1.8px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #fafafa;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    font-family: inherit;
+}
+
+.input-icon-wrap input::placeholder {
+    color: #bbb;
+}
+
+.input-icon-wrap input:focus,
+.input-icon-wrap select:focus {
+    border-color: #8d2123;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(141, 33, 35, 0.1);
+}
+
+.input-icon-wrap input:focus + i,
+.input-icon-wrap select:focus + i {
+    color: #8d2123;
+}
+
+/* focus icon color via sibling trick — use focus-within on wrapper */
+.input-icon-wrap:focus-within i {
+    color: #8d2123;
+}
+
+/* Two-column row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* Submit button */
+.book-submit-btn {
+    background: linear-gradient(135deg, #8d2123, #c0392b);
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    box-shadow: 0 6px 20px rgba(141, 33, 35, 0.38);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.book-submit-btn i {
+    font-size: 14px;
+}
+.book-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(141, 33, 35, 0.5);
+}
+.book-submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(141, 33, 35, 0.3);
+}
+
+/* Footer note */
+.book-modal-footer-note {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.book-modal-footer-note i {
+    color: #8d2123;
+    font-size: 11px;
+}
+
+/* === SUCCESS STATE === */
+.book-modal-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 36px;
+    gap: 14px;
+}
+.book-modal-success.show {
+    display: flex;
+}
+.success-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #8d2123, #c0392b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(141,33,35,0.35);
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+.book-modal-success h3 {
+    font-size: 20px;
+    color: #1a1a1a;
+    margin: 0;
+}
+.book-modal-success p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .book-modal-header,
+    .book-modal-body {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
