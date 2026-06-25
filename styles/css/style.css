@@ -328,6 +328,10 @@ section.reveal:nth-of-type(odd) {
     align-items: stretch;
 }
 
+display:grid;
+grid-template-columns: repeat(3, 1fr);
+row-gap:50px;
+column-gap:60px;
 #reviews {
     display: flex;
     flex-direction: column;
@@ -365,14 +369,12 @@ section.reveal:nth-of-type(odd) {
 .review {
     width: 100%;
     background: #fff;
-}
     #reviews {
         -ms-overflow-style: none;
         /* IE and Edge */
         scrollbar-width: none;
         /* Firefox */
     }
-}
 
     .review:hover {
         transform: translateY(-8px);
@@ -381,6 +383,7 @@ section.reveal:nth-of-type(odd) {
             0 26px 52px rgba(141, 33, 35, 0.16);
         border-color: rgba(141, 33, 35, 0.18);
     }
+}
 
     /* Quote icon — big, soft watermark style */
     .review-quote {
@@ -544,7 +547,6 @@ section.reveal:nth-of-type(odd) {
         .hamburger {
             display: block;
         }
-
         #reviews {
             grid-template-columns: 1fr;
             gap: 24px;
@@ -929,6 +931,28 @@ section.reveal:nth-of-type(odd) {
         background: rgba(141, 33, 35, 0.08);
         border-radius: 50%;
         filter: blur(90px);
+    }
+    /* faq heading */
+    .faq-heading {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .faq-heading h2 {
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: #1a1a1a;
+        margin-bottom: 12px;
+    }
+
+    .faq-heading p {
+        font-size: 17px;
+        color: #555;
+        line-height: 1.6;
     }
 
     /* list */
